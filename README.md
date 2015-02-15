@@ -24,7 +24,7 @@ The purpose of this gem is to provide an outcome handling API to clients of serv
 
 ```ruby
 
-service = JobletterSubscriptionService.new(session_auth, karista_session)
+service = JobletterSubscriptionService.new(session)
 service.subscribe(params[:email])
 
 service.resolve_outcome do |outcome|
