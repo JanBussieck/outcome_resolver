@@ -8,11 +8,11 @@ class TestService
   outcomes [:condition_valid, :something_occurred, :user_signed_in]
 
   def sign_in_user(boolean)
-    user_signed_in(true)
+    user_signed_in true
   end
 
   def make_something_occurr
-    something_occurred(true)
+    something_occurred true
   end
 
 # instead of early return we implement small utility method

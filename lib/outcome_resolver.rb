@@ -6,7 +6,7 @@ require "pry"
 # define methods from parameters that are called from the service
 # make a singleton carrying all the state the outcomes have been checked
 # separate client specific object to record the called methods
-# Warning prevent subtle bugs by not making Hash a singleton
+
 module OutcomeResolver
 
   def self.included(base)
