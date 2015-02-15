@@ -7,7 +7,6 @@ class Outcome
   end
 
   def covered_all_cases?
-    binding.pry
     @covered_cases.to_set == outcomes_hash.keys.to_set
   end
 

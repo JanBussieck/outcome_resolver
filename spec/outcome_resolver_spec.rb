@@ -24,7 +24,7 @@ describe OutcomeResolver do
 
   context "not all outcomes are covered" do
     it "raises an exception" do
-      expect(client.use_service_incorrectly(true, true)).to be(true)
+      expect{client.use_service_incorrectly(true, true)}.to raise_error
     end
   end
 
