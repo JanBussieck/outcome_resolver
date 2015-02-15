@@ -8,6 +8,7 @@ class TestService
   outcomes [:condition_valid, :something_occurred, :user_signed_in]
 
   def sign_in_user(boolean)
+    # check whether user signed in here
     user_signed_in true
   end
 
