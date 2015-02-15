@@ -20,11 +20,7 @@ Or install it yourself as:
 
 ## Usage
 
-The purpose of this gem is to provide an outcome handling API to clients
-of service objects that have more associated outcome states that success or failure
-A jobletter subscription service for example might have many outcomes depending
-on the user status, session and success or failure of the subscription.
-In this case on might use the outcome resolver API as follow:
+The purpose of this gem is to provide an outcome handling API to clients of service objects that have more associated outcome states that success or failure A jobletter subscription service for example might have many outcomes depending on the user status, session and success or failure of the subscription. In this case on might use the outcome resolver API as follow:
 
 ```ruby
 
