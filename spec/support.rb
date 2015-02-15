@@ -5,7 +5,7 @@ class TestService
   include OutcomeResolver
   # class macro outcomes takes a hash of outcomes and boolean flags and passes it
   # to each instance of the outcome class
-  outcomes [:condition_valid, :something_occurred, :user_signed_in]
+  outcomes :condition_valid, :something_occurred, :user_signed_in
 
   def sign_in_user(boolean)
     # check whether user signed in here

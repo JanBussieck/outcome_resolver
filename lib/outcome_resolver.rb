@@ -15,7 +15,7 @@ module OutcomeResolver
   end
 
   module ClassMethods
-    def outcomes(outcomes_hash)
+    def outcomes(*outcomes_hash)
 
       outcomes = Hash.new
       outcomes_hash.each do |method_name|
