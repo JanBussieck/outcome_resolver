@@ -44,11 +44,7 @@ service.resolve_outcome do |outcome|
 end
 
 ```
-Inside the service declare all expected outcomes via the `outcomes` class macro
-which expects an array of symbols. When the service actions are performed
-flags corresponding to the specified outcomes have to be set.
-This is done by simply passing a boolean value to a method of the same
-name as the outcome declared in the outcomes argument list.
+Inside the service declare all expected outcomes via the `outcomes` class macro which expects an array of symbols. When the service actions are performed flags corresponding to the specified outcomes have to be set. This is done by simply passing a boolean value to a method of the same name as the outcome declared in the outcomes argument list.
 
 ```ruby
 
