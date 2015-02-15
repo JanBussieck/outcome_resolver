@@ -1,10 +1,12 @@
 require "outcome_resolver/version"
 require "outcome_resolver/outcome"
+
 require "pry"
 
 # define methods from parameters that are called from the service
 # make a singleton carrying all the state the outcomes have been checked
 # separate client specific object to record the called methods
+# Warning prevent subtle bugs by not making Hash a singleton
 module OutcomeResolver
 
   def self.included(base)
@@ -14,23 +16,31 @@ module OutcomeResolver
 
   module ClassMethods
     def outcomes(outcomes_hash)
-      clean_outcome = Outcome.new
+
+      outcomes = Hash.new
       outcomes_hash.each do |method_name|
         self.class_eval do
 
           define_method(method_name) do |arg|
-            clean_outcome.outcomes_hash[method_name] = arg
+            outcomes[method_name] = arg
+          end
+
+          define_method(:reset_outcomes) do
+            outcomes.each do |key, val|
+              outcomes[key] = false
+            end
           end
 
         end
 
       end
 
-      self.class_eval do
-        define_method(:outcome) do
-          clean_outcome
+      Outcome.class_eval do
+        define_method(:outcomes_hash) do
+          outcomes
         end
       end
+
     end
   end
 
@@ -44,6 +54,11 @@ module OutcomeResolver
         raise OutcomeHandlingIncomplete, "You have to cover all the specified outcomes"
       end
       outcome.perform
+      reset_outcomes
+    end
+
+    def outcome
+      @outcome ||= Outcome.new
     end
 
     class OutcomeHandlingIncomplete < StandardError
