@@ -13,15 +13,18 @@ class Outcome
   def when(outcome_name, &block)
     @covered_cases << outcome_name
 
-    if outcomes_hash[outcome_name]
-      @results[outcome_name] = block
+    if outcomes_hash[outcome_name][0]
+      payload = outcomes_hash[outcome_name][1]
+      @results[outcome_name] = [block, payload]
     end
     self
   end
 
   def perform
-    @results.each do |result, block|
-      block.call()
+    @results.each do |result, block_with_payload|
+      block = block_with_payload[0]
+      payload = block_with_payload[1]
+      block.call(*payload)
     end
   end
 end

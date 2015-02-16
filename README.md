@@ -67,8 +67,9 @@ class JobletterSubscriptionService
 end
 
 ```
-TODO when blocks need to be able to pass payload
-
+TODO
+ - `when` blocks need to be able to pass payload
+ - define methods in clean room to avoid clashes in same namespace
 ## Contributing
 
 1. Fork it ( https://github.com/[my-github-username]/outcome_resolver/fork )

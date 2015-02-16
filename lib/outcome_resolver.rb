@@ -21,8 +21,8 @@ module OutcomeResolver
       outcomes_hash.each do |method_name|
         self.class_eval do
 
-          define_method(method_name) do |arg|
-            outcomes[method_name] = arg
+          define_method(method_name) do |arg, *payload|
+            outcomes[method_name] = [arg, payload]
           end
 
           define_method(:reset_outcomes) do

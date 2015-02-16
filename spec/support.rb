@@ -9,7 +9,8 @@ class TestService
 
   def sign_in_user(boolean)
     # check whether user signed in here
-    user_signed_in true
+    is_email_confirmed = true
+    user_signed_in true, is_email_confirmed
   end
 
   def make_something_occurr
@@ -47,8 +48,10 @@ class TestServiceClient
         .when :something_occurred do
           @flash[:occurence] = true
         end
-        .when :user_signed_in do
-          @flash[:signin] = true
+        .when :user_signed_in do |is_email_confirmed|
+          if is_email_confirmed
+            @flash[:signin] = true
+          end
         end
       end
 
