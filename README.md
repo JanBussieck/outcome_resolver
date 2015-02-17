@@ -1,6 +1,6 @@
 # OutcomeResolver
 
-TODO: Write a gem description
+The purpose of this gem is to provide an outcome handling API to clients of service objects than have more associated outcome states that success or failure A jobletter subscription service for example might have many outcomes depending on the user status, session and success or failure of the subscription.
 
 ## Installation
 
@@ -20,7 +20,11 @@ Or install it yourself as:
 
 ## Usage
 
-The purpose of this gem is to provide an outcome handling API to clients of service objects than have more associated outcome states that success or failure A jobletter subscription service for example might have many outcomes depending on the user status, session and success or failure of the subscription. In this case on might use the outcome resolver API as follows:
+One might use the outcome resolver API as follows:
+  - instantiate a service object and have it perform all required actions
+  - upon completion of those actions handle the respective outcomes by invoking the method `resolve_outcome` passing it a block
+  - inside of this block handle each case by invoking the `when` method passing it the name of the outcome and the handling logic as a block
+
 
 ```ruby
 
