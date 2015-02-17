@@ -37,7 +37,7 @@ service.resolve_outcome do |outcome|
   end
   .when :user_signed_in do |email_confirmed|
     if email_confirmed
-      flash[:alert] = "Howdy, bitte bestaetige noch deine Email-Adresse."
+      flash[:notice] = "Howdy, bitte bestaetige noch deine Email-Adresse."
     end
   end
 
@@ -55,6 +55,11 @@ class JobletterSubscriptionService
   outcomes :email_missing, :email_invalid
 
   def subscribe(email)
+    unless current_user.signed_in?
+      sign_in(current_user)
+      user_signed_in true, current_user.email_confirmed?
+    end
+
     email_missing false
     validate_email(email)
     #perform rest of subscription logic
