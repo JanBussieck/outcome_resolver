@@ -35,12 +35,16 @@ service.resolve_outcome do |outcome|
   .when :email_invalid do
     flash[:alert] = "Diese Email-Adresse ist nicht gültig."
   end
-
+  .when :user_signed_in do |email_confirmed|
+    if email_confirmed
+      flash[:alert] = "Howdy, bitte bestaetige noch deine Email-Adresse."
+    end
+  end
 
 end
 
 ```
-Inside the service declare all expected outcomes via the `outcomes` class macro which expects one or more symbols. When the service actions are performed flags corresponding to the specified outcomes have to be set. This is done by simply passing a boolean value to a method of the same name as the outcome declared in the outcomes argument list.
+Inside the service declare all expected outcomes via the `outcomes` class macro which expects one or more symbols. When the service actions are performed flags corresponding to the specified outcomes have to be set. This is done by simply passing a boolean value to a method of the same name as the outcome declared in the outcomes argument list. These methods can take an optional number of arguments that is passed to the block in the `when` clause.
 
 ```ruby
 
