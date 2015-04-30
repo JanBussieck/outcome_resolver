@@ -26,9 +26,7 @@ module OutcomeResolver
           end
 
           define_method(:reset_outcomes) do
-            outcomes.each do |key, val|
-              outcomes[key] = false
-            end
+            outcomes = Hash.new
           end
 
         end
